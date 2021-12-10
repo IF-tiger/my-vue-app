@@ -1,0 +1,93 @@
+<template>
+    <div class="login">
+        <div class="from-wrap">
+            <h2>登录</h2>
+            <Form ref="loginData" :model="loginData" :rules="ruleValidate" :label-width="80">
+                <FormItem label="Account" prop="acct">
+                    <Input v-model="loginData.acct" placeholder="请输入账号"></Input>
+                </FormItem>
+                <FormItem label="Password" prop="pass">
+                    <Input type="password" v-model="loginData.pass" placeholder="请输入密码"></Input>
+                </FormItem>
+                <FormItem class="form-footer">
+                    <Button  @click="handleSubmit('loginData')">提交</Button>
+                    <Button  @click="handleReset('loginData')" style="margin-left: 8px">重置</Button>
+                </FormItem>
+            </Form>
+        </div>
+    </div>
+</template>
+
+<script>
+export default {
+  data () {
+    return {
+        loginData: {
+        acct:'',
+        pass:''
+      },
+      ruleValidate: {
+        acct: [
+            { required: true, message: '账号不能为空', trigger: 'blur' },
+            { min: 3, max: 16, message: '账号长度3-16个字符', trigger: 'blur' }
+        ],
+        pass: [
+            { required: true, message: '密码不能为空', trigger: 'blur' },
+            { type: 'string', min: 6, max: 16, message: '密码长度6-16个字符', trigger: 'blur' }
+        ]
+      }
+    }
+  },
+  methods: {
+      handleSubmit (name) {
+          this.$refs[name].validate((valid) => {
+              if (valid) {
+                  console.log('尊敬的用户你好,您的账户效验通过，即将为您跳转到首页');
+                  this.$Message.success('提交成功!')
+                  this.$router.push({path:'/home'})
+        } else {
+            this.$Message.error('表单验证失败!')
+        }
+      })
+    },
+    handleReset (name) {
+        this.$refs[name].resetFields();
+    }
+  }
+}
+</script>
+<style>
+.login {
+    width: 100%;
+    height: 100%;
+    background-color: #1c2438;
+    position: absolute;
+}
+.login .from-wrap {
+    position: relative;
+    left: 50%;
+    margin-left: -200px;
+    top: 50%;
+    margin-top: -150px;
+    width: 400px;
+    border-radius: 10px;
+    background-color: #fff;
+    padding: 20px 30px;
+}
+    .login h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .login FormItem {
+        margin-bottom: 15px;
+    }
+    .ivu-form .ivu-form-item-label {
+        padding: 10px 7px 10px 0;
+    }
+    .login .form-footer {
+        text-align: right;
+    }
+    .ivu-form-item-required .ivu-form-item-label:before {
+        display: none;
+    }
+</style>
