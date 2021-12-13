@@ -57,10 +57,14 @@ export default {
                     }
                 })
                 await setTimeout(() => {
-                    this.$Spin.hide();
+                    this.$Spin.hide()
                     if (valid && this.loginData.acct === 'tiger' && this.loginData.pass === '123456' ) {
-                        this.$Message.success('身份验证成功，已为您跳转主页!')
-                        this.$router.push({path:'/home'})
+                        this.$Message.success(`欢迎${this.loginData.acct},身份验证成功，已为您跳转主页!`)
+                        this.$router.push({
+                            path:'/home',
+                            query: {userName: this.loginData.acct}
+                            })
+                            console.log(this.$router,111);
                     } else {
                         this.$Message.error('账户或密码输入错误!')
                     }
@@ -68,7 +72,7 @@ export default {
             })
         },
         handleReset (name) {
-            this.$refs[name].resetFields();
+            this.$refs[name].resetFields()
         }
     }
 }

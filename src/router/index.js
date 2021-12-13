@@ -5,7 +5,11 @@ Vue.use(Router)
 
 export const routes = [
 	{
-		path: '/', 
+		path: '/',
+		redirect: 'login'
+	},
+	{
+		path: '/login', 
 		name: 'login', //给路由命名,设置的name要唯一!
 		component: () => import('@/pages/login/login'),
 	},
@@ -14,7 +18,6 @@ export const routes = [
 		name: 'home', //给路由命名,设置的name要唯一!
 		component: () => import('@/pages/home/home'),
 	},
-
 ]
 
 export default new Router({

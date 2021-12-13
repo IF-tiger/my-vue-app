@@ -1,29 +1,5 @@
     <template>
     <div class="layout">
-        <Layout>
-            <Header>
-                <Menu mode="horizontal" theme="dark" active-name="1">
-                    <div class="layout-logo"></div>
-                    <div class="layout-nav">
-                        <MenuItem name="1">
-                            <Icon type="ios-navigate"></Icon>
-                            Item 1
-                        </MenuItem>
-                        <MenuItem name="2">
-                            <Icon type="ios-keypad"></Icon>
-                            Item 2
-                        </MenuItem>
-                        <MenuItem name="3">
-                            <Icon type="ios-analytics"></Icon>
-                            Item 3
-                        </MenuItem>
-                        <MenuItem name="4">
-                            <Icon type="ios-paper"></Icon>
-                            Item 4
-                        </MenuItem>
-                    </div>
-                </Menu>
-            </Header>
             <Layout :style="{padding: '0 50px'}">
                 <Breadcrumb :style="{margin: '16px 0'}">
                     <BreadcrumbItem>Home</BreadcrumbItem>
@@ -67,8 +43,6 @@
                     </Layout>
                 </Content>
             </Layout>
-            <Footer class="layout-footer-center">2011-2016 &copy; TalkingData</Footer>
-        </Layout>
     </div>
 </template>
 <script>
@@ -83,7 +57,7 @@
             background: #f5f7f9;
             position: relative;
             border-radius: 4px;
-            overflow: hidden;
+            /* overflow: hidden; */
         }
         .layout-logo{
             width: 100px;
